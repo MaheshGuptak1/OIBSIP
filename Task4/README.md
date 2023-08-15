@@ -1,4 +1,4 @@
-![image](https://github.com/MaheshGuptak1/OIBSIP/assets/123867660/a1057da2-6b37-4cfc-846c-a0684a99d0c3)Technologies used :
+Technologies used :
 
 NodeJS
 Express
