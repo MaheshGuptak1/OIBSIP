@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do App</title>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F0F8FF; /* Primary Color (Background) */
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color:#4CAF50;
+  margin-bottom: 30px;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50; /* Add button background color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45A049; /* Add button hover background color */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  table-layout: fixed;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  max-height: 100px;
+  overflow: hidden;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+th {
+  background-color: #007BFF; /* Heading background color */
+  color: #fff;
+}
+
+.completed-task {
+  background-color: #DFF0D8; /* Completed tasks background color */
+}
+
+.delete-button {
+  background-color: #DC3545; /* Delete button background color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #c9302c;
+}
+
+.pending-tasks {
+  /* No background for pending tasks */
+}
+
+textarea {
+  resize: vertical;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do App</h1>
+    <div class="input-section">
+      <input type="text" id="taskTitle" placeholder="Title...">
+      <textarea id="taskDescription" placeholder="Description..." rows="5"></textarea>
+      <button onclick="addTask()">Add</button>
+    </div>
+    <br><br><br>
+    <div class="pending-tasks">
+      <h2>Pending Tasks</h2>
+      <br>
+      <table id="pendingTable">
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Date & Time</th>
+          <th>Status</th>
+          
+        </tr>
+        <!-- Pending tasks will be added dynamically here -->
+      </table>
+    </div>
+    <br><br><br>
+    <div class="completed-tasks">
+        
+      <h2>Completed Tasks</h2>
+      <br>
+      <table id="completedTable">
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Date & Time</th>
+          <th>Status</th>
+          
+        </tr>
+        <!-- Completed tasks will be added dynamically here -->
+      </table>
+    </div>
+  </div>
+  <script>
+    
+    
+    const pendingTable = document.getElementById('pendingTable');
+const completedTable = document.getElementById('completedTable');
+const taskTitle = document.getElementById('taskTitle');
+const taskDescription = document.getElementById('taskDescription');
+
+function addTask() {
+  const titleText = taskTitle.value.trim();
+  const descriptionText = taskDescription.value.trim();
+  if (titleText === '' || descriptionText === '') return;
+
+  const task = createTaskElement(titleText, descriptionText);
+
+  pendingTable.appendChild(task);
+
+  taskTitle.value = '';
+  taskDescription.value = '';
+}
+
+function createTaskElement(titleText, descriptionText) {
+  const taskRow = document.createElement('tr');
+  const titleData = document.createElement('td');
+  const descriptionData = document.createElement('td');
+  const dateData = document.createElement('td');
+  const buttonData = document.createElement('td');
+
+  const currentDate = new Date();
+  const dateString = currentDate.toLocaleDateString();
+  const timeString = currentDate.toLocaleTimeString();
+
+  titleData.textContent = titleText;
+  descriptionData.textContent = descriptionText;
+  dateData.textContent = `${dateString} - ${timeString}`;
+
+  const completeButton = document.createElement('button');
+  completeButton.textContent = 'Complete';
+  completeButton.classList.add('complete-button');
+  completeButton.onclick = function () {
+    markAsComplete(taskRow);
+  };
+  buttonData.appendChild(completeButton);
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.classList.add('delete-button');
+  deleteButton.onclick = function () {
+    removeTask(taskRow);
+  };
+  buttonData.appendChild(deleteButton);
+
+  taskRow.appendChild(titleData);
+  taskRow.appendChild(descriptionData);
+  taskRow.appendChild(dateData);
+  taskRow.appendChild(buttonData);
+
+  return taskRow;
+}
+
+function markAsComplete(taskRow) {
+  const completeButton = taskRow.querySelector('.complete-button');
+  completeButton.remove();
+  completedTable.appendChild(taskRow);
+}
+
+function removeTask(taskRow) {
+  taskRow.remove();
+}
+
+  </script>
+</body>
+</html>

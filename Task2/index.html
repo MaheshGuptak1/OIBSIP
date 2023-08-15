@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tribute to Pawan Kalyan</title>
+  <style>
+   body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      padding-top: 50px;
+    }
+
+    p {
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    img {
+      max-width: 100%;
+      height: 600px;
+      border: 5px solid #fff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      margin: 20px 0;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .main-image {
+      width: 70%;
+      height: 600px;
+      margin-top: 20px;
+      margin-bottom: -30px;
+    }
+    .left-image {
+      width: 36%;
+      float: left;
+      margin: 20px;
+    }
+
+    .right-image {
+      width: 36%;
+      float: right;
+      margin: 20px;
+    }
+    .cl,.cr
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    p{
+        line-height: 1.6;
+        font-family: Arial, sans-serif;
+    }
+    .image-container
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap:100px;
+    }
+    .cl .inner p{
+        margin-left:50px;
+    }
+    .cr .inner p{
+        margin-right:50px;
+    }
+    .main{
+        margin-bottom:450px;
+    }
+    
+   /* Add these styles to your existing CSS */
+
+/* Audio control buttons */
+#playButton,
+#pauseButton,
+#resumeButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#playButton:hover,
+#pauseButton:hover,
+#resumeButton:hover {
+  background-color: #0056b3;
+}
+
+/* Disable styles */
+#playButton:disabled,
+#pauseButton:disabled,
+#resumeButton:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* Audio control buttons specific styles */
+#playButton {
+  background-color: #28a745;
+}
+
+#pauseButton {
+  background-color: #dc3545;
+}
+
+#resumeButton {
+  background-color: #ffc107;
+}
+
+
+@media screen and (max-width: 768px) {
+      /* Adjust styles for smaller screens */
+      body {
+        font-size: 16px; /* Adjust font size for better readability */
+      }
+      
+
+      .main-image {
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+        margin-bottom: -10px;
+      }
+
+      .left-image,
+      .right-image {
+        width: 100%;
+        float: none;
+        margin: 10px 0;
+      }
+
+      .cl,
+      .cr {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cl .inner p,
+      .cr .inner p {
+        margin: 10px;
+      }
+    }
+
+
+
+    
+.music
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.final
+{
+  height: 40px;
+  
+}
+  </style>
+</head>
+<body>
+
+
+  <div class="main">
+    <h1>Tribute to Pawan Kalyan</h1>
+    <img src="1.jpeg" alt="Pawan Kalyan" class="main-image">
+    <p style="margin-top:130px;">
+        Pawan Kalyan, born on September 2, 1971, as Konidela Kalyan Babu, is a renowned actor and politician in the Telugu film industry. Fondly known as "Power Star," he is the younger brother of legendary actor Chiranjeevi. Pawan Kalyan made his acting debut in the 1996 Telugu film "Akkada Ammayi Ikkada Abbayi" and quickly rose to fame with his exceptional acting skills and unique screen presence.
+        Beyond the glitz of the film industry, Pawan Kalyan's entry into politics marked a turning point in his career. His decision to found the Jana Sena Party showcased his commitment to serving society and bringing about positive change.
+        As a political leader, Pawan Kalyan's ideologies and principles revolve around the welfare of the common people. He has consistently advocated for social justice, economic empowerment, and rural development. His speeches resonate with the masses, as he fearlessly addresses critical issues plaguing society and strives to bring about systemic change.
+
+Pawan Kalyan's political journey has been marked by highs and lows, yet he remains undeterred in his commitment to the welfare of the people. He actively campaigned during elections, both in Andhra Pradesh and Telangana, and extended his support to like-minded political alliances.
+    </p>
+  
+<br><br><br><br><br><br><br><br><br><br><br><br>
+  <div class="music">
+  <audio id="audioPlayer" controls>
+    <source src="audio.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <button id="playButton">Play</button>
+  <button id="pauseButton">Pause</button>
+  <button id="resumeButton">Resume</button>
+</div>
+</div>
+  
+  <div class="image-container">
+
+    <div class="cl">
+        <img src="6.jpg" style="height: 500px; width:560px;" alt="Young Pawan Kalyan" class="left-image">
+        <div class="inner">
+            <h2>Early Career and Rise to Stardom</h2>
+        <p>
+
+Pawan Kalyan's journey in the entertainment industry began with humble roots and an insatiable passion for acting. Born on September 2, 1971, as Konidela Kalyan Babu, he ventured into Tollywood with his debut film "Akkada Ammayi Ikkada Abbayi" in 1996. Although the movie received a moderate response, it marked the beginning of a promising career for the young actor.
+
+It was with the romantic drama "Tholi Prema" in 1998 that Pawan Kalyan truly showcased his acting prowess and exceptional screen presence. His portrayal of Balu, a lively young man experiencing love and heartbreak, left an indelible mark on the audience and critics alike. The film's success was unparalleled, and it catapulted Pawan Kalyan to stardom, earning him accolades and the prestigious National Film Award for Best Feature Film in Telugu.
+
+Following this triumph, Pawan Kalyan delivered a string of blockbuster movies, each showcasing his versatility as an actor. His action-packed roles in films like "Gabbar Singh," "Attarintiki Daredi," and "Jalsa" enthralled the masses and cemented his status as one of the most sought-after actors in the Telugu film industry. With his unique blend of charisma, intense performances, and a signature style, he garnered a massive fan following that transcended borders.
+
+
+        </div>
+    </div>
+
+    <div class="cr">
+        <div class="inner">
+
+            <h2>Political Involvement and Activism</h2>
+        <p>
+        Apart from his acting career, Pawan Kalyan is actively involved in politics. In 2008, he founded the Jana Sena Party with the goal of bringing about positive change in society. His dedication to public service and his ability to connect with the masses have made him a respected political figure. In his political journey, Pawan Kalyan has been at the forefront of advocating for various critical issues. He has consistently spoken out against corruption, economic disparities, and social injustices. Through his fiery speeches and unwavering commitment, he has instilled hope in the hearts of millions, inspiring them to actively participate in the democratic process.
+
+        But Pawan Kalyan's involvement in society goes beyond mere politics. He understands the importance of giving back to the community and has been actively engaged in philanthropic activities. Through his foundation, he has supported various charitable causes, including relief efforts during natural disasters and initiatives aimed at uplifting underprivileged sections of society.Pawan Kalyan's ideologies, principles, and contributions to society have inspired many, and he continues to use his influence to make a positive impact on various charitable causes through his foundation.
+        </p>
+        </div>
+
+        <img src="2.jpeg" style="height: 800px; width: 560px;" alt="Pawan Kalyan in a movie" class="right-image">
+        
+    
+    </div>
+
+
+
+
+
+    <div class="cl">
+        
+    <div class="inner">
+        <h2>Dedicated Fan Base</h2>
+    <p>
+      Pawan Kalyan's journey as an actor and politician is a testament to his unwavering commitment and passion for his work. His impact on the Telugu film industry and society at large is immeasurable, and his legacy will forever be cherished by his fans and admirers. His fans, fondly known as "Pawanists," admire his charismatic personality, unique style, and dedication to serving society. 
+      **Dedicated Fan Base**
+
+Pawan Kalyan's remarkable journey as an actor and politician has left an indelible mark on the hearts of millions, and his dedicated fan base stands as a testament to the profound impact he has had on the Telugu film industry and society as a whole.
+
+Affectionately known as "Pawanists," his fans are a devoted community that transcends geographical boundaries and unites under the common love and admiration for their beloved idol. From the early days of his acting career to his foray into politics, Pawan Kalyan's fans have stood by him through every triumph and challenge, unwavering in their support.
+
+Pawan Kalyan's magnetic personality, combined with his unique style and remarkable performances, has earned him a loyal following that spans across generations. His fans not only admire his exceptional acting skills but also resonate deeply with his principles and dedication to serving society's welfare.
+
+    </p>
+
+    </div>
+
+    <img src="5.jpg"  style="height: 500px;  width: 560px;" alt="Pawan Kalyan with his fans" class="right-image">
+
+    </div>
+
+        
+
+    <div class="cr">
+        <img src="4.jpg" style="height: 500px;  width: 560px;" alt="Pawan Kalyan with his fans" class="right-image">
+        
+        <div class="inner">
+            <h2>Continuing Legacy</h2>
+        <p>
+            Pawan Kalyan's impact on society transcends the boundaries of entertainment and politics, making him a timeless source of inspiration for millions. His enduring legacy is a testament to the profound influence he has had on the lives of people and the positive change he has initiated across various spheres.
+            As an actor, Pawan Kalyan's contributions to cinema have redefined the way Telugu films are perceived and appreciated. Through his diverse roles and compelling performances, he has entertained audiences and touched their hearts, leaving an indelible mark on the industry. His iconic films continue to be celebrated, and his on-screen presence continues to inspire aspiring actors and filmmakers.
+
+            In the realm of politics, Pawan Kalyan's journey has been marked by a genuine commitment to public service and a relentless pursuit of a better society. As a respected political figure, he has used his influence and popularity to advocate for crucial issues and address the concerns of the common people. His ideologies and principles continue to resonate with those seeking transformative change in governance.
+            
+            Beyond the glamour of stardom and the power of politics, Pawan Kalyan's philanthropic endeavors have served as a beacon of hope for the marginalized and underprivileged. His active involvement in charitable activities has made a significant difference in the lives of those he has reached out to, embodying the spirit of compassion and empathy.
+            
+            
+        </p>
+        </div>
+
+
+    </div>
+<br><br><br>
+    <div class="final">
+      The content and images utilized in this tribute have been sourced from the internet. We extend our acknowledgments to the rightful owners for their contributions.
+    </div>
+
+    
+    <script>
+      const audio = document.getElementById("audioPlayer");
+      const playButton = document.getElementById("playButton");
+      const pauseButton = document.getElementById("pauseButton");
+      const resumeButton = document.getElementById("resumeButton");
+    
+      playButton.addEventListener("click", () => {
+        audio.play();
+        playButton.disabled = true;
+        pauseButton.disabled = false;
+        resumeButton.disabled = true;
+      });
+    
+      pauseButton.addEventListener("click", () => {
+        audio.pause();
+        playButton.disabled = true;
+        pauseButton.disabled = true;
+        resumeButton.disabled = false;
+      });
+    
+      resumeButton.addEventListener("click", () => {
+        audio.play();
+        playButton.disabled = true;
+        pauseButton.disabled = false;
+        resumeButton.disabled = true;
+      });
+    
+      audio.addEventListener("ended", () => {
+        playButton.disabled = false;
+        pauseButton.disabled = true;
+        resumeButton.disabled = true;
+      });
+    </script>
+    
+  </div>
+</body>
+</html>

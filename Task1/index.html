@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }   
+
+        .calculator {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            max-width: 400px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 500px;
+            background-color: #b3d9ff;
+        }
+
+        .calculator {
+    background-color: #333; 
+}
+.result-container {
+    background-color: #222; 
+}
+.buttons button {
+    background-color: #444; 
+    color: #f0f0f0; 
+}
+.buttons button:active {
+    background-color: #666; 
+}
+
+        .result-container {
+            background-color: #333;
+            overflow: auto; 
+            white-space: nowrap;
+            color: white;
+            font-size: 24px;
+            text-align: right;
+            border-radius: 8px 8px 0 0;
+            height: 100px;
+            padding: 10px;
+        }
+
+        .result {            
+            padding: 10px;
+        }
+
+        .result.two-lines {
+            display: grid;
+            align-items: center;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            padding: 5px; 
+        }
+
+        .buttons button {
+            width: 100%;
+            height: 75px;
+            border-radius: 0;
+            outline: none;
+            border: none;
+            font-size: 18px; 
+            text-align: center;
+            transition: 0.2s all linear;
+            padding: 10px 0; 
+        }
+
+        #equal, button[onclick="/"], button[onclick="*"], button[onclick="-"], button[onclick="+"] {
+            grid-column: span 1;
+        }
+
+        #dot {
+            font-weight: 600;
+        }
+
+        .buttons button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .buttons button:active {
+            background-color: #eeb3b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="result-container">
+            <div class="result">
+                <p id="result">0</p>
+            </div>
+        </div>
+        <div class="buttons">
+            <button>C</button>
+            <button>/</button>
+            <button>DEL</button>
+            <button>/</button>
+            
+
+
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>*</button>
+
+
+
+
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>-</button>
+
+            
+            
+
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>+</button>
+
+
+            
+            <button>00</button>
+            <button>0</button>
+            <button id="dot">.</button>
+            <button id="equal">=</button>
+            
+            
+        </div>
+    </div>
+  
+
+    <script>
+        let buttons = document.getElementsByTagName('button');
+    let result = document.getElementById('result');
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function() {
+            let input = this.innerText;
+            updateDisplay(input);
+        };
+    }
+
+    function updateDisplay(input) {
+    let currentDisplay = result.innerText;
+    let isOverflowed = result.clientHeight < result.scrollHeight;
+
+    if (currentDisplay === "0") {
+        if (input !== "C" && input !== "DEL" && input !== "=") {
+            result.innerText = "";
+            result.innerText = input;
+        }
+    } else {
+        if (input === "DEL") {
+            result.innerText = currentDisplay.substring(0, currentDisplay.length - 1);
+        } else if (input === "C") {
+            result.innerText = "0";
+        } else if (input !== "=") {
+            result.innerText += input;
+        }
+    }
+
+    
+    if (result.clientHeight < result.scrollHeight) {
+        if (!isOverflowed) {
+           
+            result.scrollTo({
+                left: result.scrollWidth,
+                behavior: "smooth"
+            });
+        }
+    }
+    else {
+        
+        result.scrollTo({
+            left: 0,
+            behavior: "smooth"
+        });
+    }
+
+    if (input === "=") {
+        let display = result.innerText;
+        result.innerText = calculate(display);
+        result.classList.remove("two-lines");
+    }
+}
+
+
+    function calculate(expression) {
+        let operators = [];
+        let operands = [];
+
+        let currentNumber = "";
+        for (let i = 0; i < expression.length; i++) {
+            let char = expression.charAt(i);
+
+            if (isNaN(char) && char !== ".") {
+                operands.push(parseFloat(currentNumber));
+                currentNumber = "";
+                operators.push(char);
+            } else {
+                currentNumber += char;
+            }
+        }
+        operands.push(parseFloat(currentNumber));
+
+        for (let i = 0; i < operators.length; i++) {
+            if (operators[i] === "*" || operators[i] === "/") {
+                let op1 = operands[i];
+                let op2 = operands[i + 1];
+                let operator = operators[i];
+
+                if (operator === "*") {
+                    operands.splice(i, 2, op1 * op2);
+                    operators.splice(i, 1);
+                    i--;
+                } else if (operator === "/") {
+                    operands.splice(i, 2, op1 / op2);
+                    operators.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        while (operators.length > 0) {
+            let op1 = operands.shift();
+            let op2 = operands.shift();
+            let operator = operators.shift();
+
+            if (operator === "+") {
+                operands.unshift(op1 + op2);
+            } else if (operator === "-") {
+                operands.unshift(op1 - op2);
+            }
+        }
+
+        return operands[0];
+    }
+
+    </script>
+</body>
+</html>
