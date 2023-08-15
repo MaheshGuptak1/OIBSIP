@@ -19,7 +19,7 @@ Steps to run:
 
 
 
-3)Then simply start your app  "npm app.js"
+3)Then simply start your app  "node app.js"
 
 
 
