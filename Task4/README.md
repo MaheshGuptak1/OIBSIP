@@ -24,7 +24,10 @@ Steps to run:
 
 
 The Server should now be running at http://localhost:5000/
-NOte if this is not working please check the backup file in this task4 folder , i used bcrypt as a client application , but its do the same work as mentioned in the task4 ,kindly give me certificate of completion.
+
+
+IMPORTANT 
+NOTE:  if this is not working please check the backup file in this task4 folder , i used bcrypt as a client application , but its do the same work as mentioned in the task4 ,kindly give me certificate of completion.
 
 Thank you oasis for this opportunity.
 
