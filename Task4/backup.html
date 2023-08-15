@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f5f5;
+    color: #333;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    padding: 20px;
+    color: #337ab7;
+}
+
+/* Form styles */
+form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #286090;
+}
+
+/* Secured Page styles */
+#secured-page {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #d9edf7;
+    border: 1px solid #bce8f1;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+    }
+}
+
+    </style>
+    <title>Login Authentication System</title>
+</head>
+<body>
+    <h1>Login Authentication System</h1>
+
+    <!-- User Registration Form -->
+    <h2>Register</h2>
+    <form id="register-form">
+        <input type="text" id="register-username" placeholder="Username" required>
+        <input type="password" id="register-password" placeholder="Password" required>
+        <button type="submit">Register</button>
+    </form>
+    
+    <!-- User Login Form -->
+    <h2>Login</h2>
+    <form id="login-form">
+        <input type="text" id="login-username" placeholder="Username" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Secured Page (Only accessible to logged-in users) -->
+    <div id="secured-page" style="display: none;">
+        <h2>Welcome to the Secured Page!</h2>
+        <p>This content is only accessible to logged-in users.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const users = [];
+
+  document.getElementById('register-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const username = document.getElementById('register-username').value;
+    const password = document.getElementById('register-password').value;
+
+    const userExists = users.some(user => user.username === username);
+    
+    if (userExists) {
+        alert('Username already taken');
+        return;
+    }
+
+    const hashedPassword = btoa(password);
+    
+    users.push({ username, password: hashedPassword });
+    
+    showSuccessMessage('Registration successful for ' + username);
+});
+
+    
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const username = document.getElementById('login-username').value;
+        const password = document.getElementById('login-password').value;
+        
+        const user = users.find(user => user.username === username);
+        
+        if (!user) {
+            alert('User not found');
+            return;
+        }
+    
+        if (user.password === btoa(password)) {
+            showSuccessMessage('Login successful for ' + username);
+            document.getElementById('secured-page').style.display = 'block';
+        } else {
+            alert('Invalid password');
+        }
+    });
+
+    function showSuccessMessage(message) {
+        const successMessage = document.createElement('p');
+        successMessage.style.color = 'green';
+        successMessage.textContent = message;
+        document.body.appendChild(successMessage);
+    }
+});
+
+    </script>
+</body>
+</html>
