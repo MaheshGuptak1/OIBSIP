@@ -9,7 +9,7 @@ Steps to run:
 1) Clone the Repository from vscode git clone extension
 
 2) Installing NPM dependencies
-      1) open the file named "package-lock.json" and right clikc on it,
+      1) open the file named "package-lock.json" and right click on it,
    
       2) you see option to run in Integrated Terminal then open it here is reference images " https://drive.google.com/file/d/1Pz3HxE2aGxbgIY2sItG0M0CYLCu8ix-W/view?usp=drive_link "
   
