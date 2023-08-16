@@ -12,21 +12,21 @@
     box-sizing: border-box;
 }
 
-/* Body styles */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f5f5;
     color: #333;
 }
 
-/* Header styles */
+
 h1 {
     text-align: center;
     padding: 20px;
     color: #337ab7;
 }
 
-/* Form styles */
+
 form {
     width: 300px;
     margin: 0 auto;
@@ -61,7 +61,9 @@ form button:hover {
     background-color: #286090;
 }
 
-/* Secured Page styles */
+
+
+        
 #secured-page {
     margin: 20px auto;
     padding: 20px;
@@ -72,7 +74,8 @@ form button:hover {
     display: none;
 }
 
-/* Responsive styles */
+
+        
 @media (max-width: 600px) {
     form {
         width: 90%;
@@ -85,7 +88,8 @@ form button:hover {
 <body>
     <h1>Login Authentication System</h1>
 
-    <!-- User Registration Form -->
+
+    
     <h2>Register</h2>
     <form id="register-form">
         <input type="text" id="register-username" placeholder="Username" required>
@@ -93,7 +97,8 @@ form button:hover {
         <button type="submit">Register</button>
     </form>
     
-    <!-- User Login Form -->
+
+    
     <h2>Login</h2>
     <form id="login-form">
         <input type="text" id="login-username" placeholder="Username" required>
@@ -101,7 +106,7 @@ form button:hover {
         <button type="submit">Login</button>
     </form>
 
-    <!-- Secured Page (Only accessible to logged-in users) -->
+    
     <div id="secured-page" style="display: none;">
         <h2>Welcome to the Secured Page!</h2>
         <p>This content is only accessible to logged-in users.</p>
